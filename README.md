@@ -34,7 +34,8 @@ To download the NYU dataset depth maps and the 3D ground truth semantics, we use
                     |-- xxxxx_0000.bin
 ### Data Preperation
 To generate 3D volumes for train and evaluate the SSC model:
-1. compile the CUDA code:\\
+1. compile the CUDA code:
+   
 nvcc -std=c++11 --ptxas-options=-v --compiler-options '-fPIC' -o lib_preproc.so --shared lib_preproc.cu
-2. run preproc_tsdf.py using run_job.sh  
+3. run preproc_tsdf.py using run_job.sh  
 ###  
