@@ -55,7 +55,8 @@ For the 3D model evaluation, use `run_e_job.sh`, or run:
 (change the paths according to your actual paths)
 
 ### 3D SSC Object Generation
-To generate the 3D scenes for GT and predictions. Use `run_obj_job.sh`, or run:
+To generate the 3D scenes for GT and predictions. Use `run_obj_job.sh`, or run:  
+
 `python 3d_obj_gen.py --model_name ResUNet --expr_name xxxx --gt_path './NYU_gt_pred/' --output_path './obj/' --weights "./saved_models/path1.pth"`
 
 (change the paths according to your actual paths)
