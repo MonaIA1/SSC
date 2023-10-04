@@ -40,5 +40,22 @@ To generate 3D volumes for train and evaluate the SSC model:
    
 2. run `preproc_tsdf.py` using `run_job.sh`
 
+### SSC Training
+For training the 3D model, use `run_t_job.sh`, or run:  
 
-###  
+`python train.py --dataset NYU --model_name ResUNet --expr_name xxxx --train_batch_size 4 --val_batch_size 2 --base_lr 0.01 --decay 0.0005 --epochs 60`  
+
+(check help --help for additional information)
+
+### SSC Evaluaion
+For the 3D model evaluation, use `run_e_job.sh`, or run:  
+
+`python evaluation.py --dataset NYUCAD --model_name ResUNet --expr_name xxxx --weights "./saved_models/path1.pth" "./saved_models/path2.pth" "./saved_models/path3.pth" `  
+
+(change the paths according to your actual paths)
+
+### 3D SSC Object Generation
+To generate the 3D scenes for GT and predictions. Use `run_obj_job.sh`, or run:
+`python 3d_obj_gen.py --model_name ResUNet --expr_name xxxx --gt_path './NYU_gt_pred/' --output_path './obj/' --weights "./saved_models/path1.pth"`
+
+(change the paths according to your actual paths)
