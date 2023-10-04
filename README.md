@@ -1,6 +1,6 @@
 # 3D Semantic Scene Completion from a Depth Map with Unsupervised Learning for Semantics Prioritisation
 This is the setup environment, dataset preperation and the source code for reproducing the results of the paper, available in:
-Please cite the paper if paert of the code is used for anypurpose.
+Please cite the paper if part of the code is used for anypurpose.
 
 ## Setup
 ### Hardware Requirement
