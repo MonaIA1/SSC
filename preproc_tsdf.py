@@ -137,6 +137,7 @@ def Run():
     print("Total time: %s seconds                                                       " % (time.time() - total_time))
        
 if __name__ == '__main__':
+  # parse_arguments()
   Run()
 
 
