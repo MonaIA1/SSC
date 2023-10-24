@@ -42,7 +42,7 @@ processed = 0
 ##################################
 
 def parse_arguments():
-    global BASE_PATH, DATASET, DEST_PATH, DEVICE, THREADS
+    global BASE_PATH, DEST_PATH, DEVICE, THREADS
 
     print("\nSSC PREPROCESSOR\n")
 
@@ -53,7 +53,6 @@ def parse_arguments():
     parser.add_argument("--threads", help="Concurrent threads. Default " + str(THREADS), type=int, default=THREADS, required=False)
     args = parser.parse_args()
 
-    DATASET = args.dataset
     BASE_PATH = args.base_path
     DEST_PATH = args.dest_path
     DEVICE = args.device
@@ -61,7 +60,7 @@ def parse_arguments():
     
     
 def process_multi(depth_prefixes):
-    global BASE_PATH, DATASET, DEST_PATH, DEVICE, THREADS, to_process, proc_prefixes, total_time, processed
+    global BASE_PATH, DEST_PATH, DEVICE, THREADS, to_process, proc_prefixes, total_time, processed
     
     file_prefix = depth_prefixes
     
@@ -115,7 +114,7 @@ def process_multi(depth_prefixes):
 
 # Main Function
 def Run():
-    global BASE_PATH, DATASET, DEST_PATH, DEVICE, THREADS, to_process, proc_prefixes, total_time
+    global BASE_PATH, DEST_PATH, DEVICE, THREADS, to_process, proc_prefixes, total_time
     
     print(" .")
     
@@ -137,7 +136,7 @@ def Run():
     print("Total time: %s seconds                                                       " % (time.time() - total_time))
        
 if __name__ == '__main__':
-  # parse_arguments()
+  parse_arguments()
   Run()
 
 
