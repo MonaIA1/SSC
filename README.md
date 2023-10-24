@@ -38,7 +38,9 @@ To generate 3D volumes for train and evaluate the SSC model:
 1. compile the CUDA code: 
    `nvcc -std=c++11 --ptxas-options=-v --compiler-options '-fPIC' -o lib_preproc.so --shared lib_preproc.cu`
    
-2. run `preproc_tsdf.py` using `run_job.sh`
+2. To process the 3D volumes use `run_job.sh`, or run:
+   `python preproc_tsdf.py --base_path './directory_path_to_be_processed' --dest_path './directory_path_of_processed_data'`
+   Ex: `python preproc_tsdf.py --base_path './data/NYUtest' --dest_path './data/NYU_test_preproc'`
 
 ### SSC Training
 For training the 3D model, use `run_t_job.sh`, or run:  
