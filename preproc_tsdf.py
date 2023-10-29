@@ -88,14 +88,16 @@ def process_multi(depth_prefixes):
       exit(-1)
     else:
      ##########################################################################################################
-      mapping = depth_mapping.astype(np.int64)
+      # mapping = depth_mapping.astype(np.int64)
       
       np.savez_compressed(preproc_file,
                            tsdf=vox_tsdf.reshape((shape[0], shape[1], shape[2], 1)),
                            lbl=segmentation_label.reshape((down_shape[0], down_shape[1], down_shape[2])),
                            weights= vox_weights.reshape((down_shape[0], down_shape[1], down_shape[2])),
                            masks= vox_masks.reshape((down_shape[0], down_shape[1], down_shape[2] )),
-                           mapping = mapping.reshape((shape[0]*shape[1]* shape[2], 1))) 
+                           #mapping = mapping.reshape((shape[0]*shape[1]* shape[2], 1))
+                           mapping = depth_mapping.astype(np.int64)
+                         ) 
       
       
    ##################################################################################################################
