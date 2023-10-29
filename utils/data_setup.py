@@ -27,7 +27,7 @@ class SSCData(Dataset):
         y_batch = one_hot(y_batch, num_classes=12).float().permute(3, 0, 1, 2).float()
         w_batch = torch.from_numpy(loaded['weights']).float()
         m_batch = torch.from_numpy(loaded['masks']).float()
-        #d_batch = torch.from_numpy(loaded['mapping']).reshape( 1, 240*144*240)
+        #d_batch = torch.from_numpy(loaded['mapping'])
         sample = {
             'vox_tsdf': x_batch,
             'vox_lbl': y_batch,
