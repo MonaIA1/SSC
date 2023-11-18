@@ -35,7 +35,7 @@ BASE_LR= 0.01
 DECAY = 0.0005
 EPOCHS = 60
 #NUM_WORKERS = os.cpu_count()
-NUM_WORKERS = 2 # 2 to eliminate DataLoader running slow or even freeze
+NUM_WORKERS = 6 # 2 to eliminate DataLoader running slow or even freeze
 FOLD_NUM = 1
 
 #import wandb
@@ -149,7 +149,7 @@ def train():
       train_time_start = timer()
       
       # initialize wandb for each fold
-      run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}', group='k-fold', name=f'fold-{FOLD_NUM}', reinit=True)
+      #run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}', group='k-fold', name=f'fold-{FOLD_NUM}', reinit=True)
       
       # initialize the early_stopping object
       early_stopping = EarlyStopping(patience=10, verbose=True)
