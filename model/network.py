@@ -119,7 +119,7 @@ class build_resunet(nn.Module):
         self.f2 = nn.Conv3d(16, 16, kernel_size=(3,3,3), padding='same')
         self.f3 = nn.Conv3d(16, 12, kernel_size=(3,3,3), padding='same')
         self.relu = nn.ReLU()
-        self.softmax = nn.Softmax(dim = 1)
+        
 
 
     def forward(self, inputs):
@@ -193,10 +193,8 @@ class build_resunet(nn.Module):
 
         f3 = self.f3(f2)
         #print("f3", f3.size())
-
-        output = self.softmax(f3)
-        #print("output", output.size())
-
+        
+        output = f3
         return output
 
 def get_res_unet():
