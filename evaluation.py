@@ -81,7 +81,7 @@ def model_evalauteion ():
       model_eval = get_mmnet_depth_rgb_mid() 
      
     # initialize wandb for each weighted fold
-    run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}_testing', group='k-fold', name=f'fold-{fold_num}', reinit=True)
+    #run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}_testing', group='k-fold', name=f'fold-{fold_num}', reinit=True)
     
     # Because of parallization on multiple GPUs during the training we need to
     # 1- Load the saved state dict
