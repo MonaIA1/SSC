@@ -73,12 +73,6 @@ def model_evalauteion ():
   
     if  MODEL_NAME == 'ResUNet':
       model_eval = get_res_unet()
-    elif MODEL_NAME == 'mmnet':
-      model_eval = get_mmnet()
-    elif MODEL_NAME == 'mmnet_early': 
-      model_eval = get_mmnet_depth_rgb_early() 
-    elif MODEL_NAME == 'mmnet_mid': 
-      model_eval = get_mmnet_depth_rgb_mid() 
      
     # initialize wandb for each weighted fold
     #run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}_testing', group='k-fold', name=f'fold-{fold_num}', reinit=True)
