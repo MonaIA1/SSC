@@ -4,18 +4,7 @@ import torch.nn.functional as F
 import math
 
 
-class batchnorm_relu(nn.Module):
-    def __init__(self, in_c):
-        super().__init__()
 
-        self.bn = nn.BatchNorm3d(in_c)
-        self.relu = nn.ReLU()
-
-    def forward(self, inputs):
-        x = self.bn(inputs)
-        x = self.relu(x)
-        return x
-  ######################################################################### 
 class batchnorm_relu(nn.Module):
     def __init__(self, in_c):
         super().__init__()
