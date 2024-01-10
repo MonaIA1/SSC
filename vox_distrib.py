@@ -36,11 +36,11 @@ def vox_dist():
   for batch_num, sample in enumerate(train_loader):
       x, y, w, m = sample['vox_tsdf'].to(device), sample['vox_lbl'].to(device), sample['vox_weight'].to(device),sample['vox_mask'].to(device) # x (input)-> tsdf, y(target)-> gt_labels, w-> weights of occluded and occupied regions =1 while other voxels =0. m-> masks of the occluded and occupied regions
 # Main Function
-      # Count the number of elements equal to 0.5
-      occl_occu_count += (m == 1.0).sum()
-      surface_count += (m == 0.5).sum()
-      occl_emp_count += (m == 0.25).sum()
-      empty_count += (m == 0.0).sum()
+      # Count the number of elements
+      occl_occu_count += (m == 1.0).sum() # occluded occubied
+      surface_count += (m == 0.5).sum() # occubied on surface
+      occl_emp_count += (m == 0.25).sum() # occluded empty
+      empty_count += (m == 0.0).sum() 
   
   print (f' occl_occu_count: {occl_occu_count}')
   print (f' surface_count: {surface_count}')
