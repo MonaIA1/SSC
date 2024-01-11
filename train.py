@@ -19,7 +19,7 @@ from utils.data_setup import SSCData
 from utils.file_utils import get_all_preprocessed_prefixes 
 from utils.engin import EarlyStopping, create_writer,save_model, print_train_time 
 from model.network import get_res_unet
-from model.losses import WeightedCrossEntropyLoss, WCE_BalancedClusters, WCE_k3Clusters
+from model.losses import WeightedCrossEntropyLoss, WCE_k3Clusters
 from model.metrics import comp_IoU, m_IoU
 from torchsummary import summary
 
@@ -33,7 +33,7 @@ TRAIN_BATCH_SIZE = 4
 VAL_BATCH_SIZE = 2
 BASE_LR= 0.01
 DECAY = 0.0005
-EPOCHS = 60
+EPOCHS = 100
 #NUM_WORKERS = os.cpu_count()
 NUM_WORKERS = 6 # 2 to eliminate DataLoader running slow or even freeze
 FOLD_NUM = 1
@@ -132,7 +132,7 @@ def train():
       ############################################################################################
       # define loss
       #loss_function = WeightedCrossEntropyLoss() # custom weighted loss (CE + re-sampling)
-      loss_function = WCE_BalancedClusters(device)
+      loss_function = WCE_k3Clusters(device)
       print("Loss.function: "+ str(loss_function))
       print("-------------------------------------------------------------")
       ############################################################################################
@@ -152,7 +152,7 @@ def train():
       #run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}', group='k-fold', name=f'fold-{FOLD_NUM}', reinit=True)
       
       # initialize the early_stopping object
-      early_stopping = EarlyStopping(patience=10, verbose=True)
+      early_stopping = EarlyStopping(patience=15, verbose=True)
       
       print(f"Processing FOLD NUM: {FOLD_NUM}")
       print(f'Number of EPOCHS in this fold: {EPOCHS}')  
@@ -172,8 +172,7 @@ def train():
         
               # 1. Forward pass
               ##########################
-              if  (MODEL_NAME == 'ResUNet'):
-                outputs = model(inputs)
+              outputs = model(inputs)
               ########################### 
               
               # 2. Calculate loss (per batch)
@@ -209,7 +208,6 @@ def train():
           train_prec /= len(train_loader) 
           train_recall /= len(train_loader) 
           train_mIoU /= len(train_loader) 
-          ###########################
         ############################## validation #######################################    
           
           model.eval()
@@ -220,15 +218,11 @@ def train():
                   v_IoU, v_prec, v_recall, v_mIoU = 0,0,0,0
                   seg_lis =[]     
                   inputs, targets, weights, masks = sample['vox_tsdf'].to(device), sample['vox_lbl'].to(device), sample['vox_weight'].to(device),sample['vox_mask'].to(device)
-                  
-                  ##########################
-                  if  (MODEL_NAME == 'ResUNet') :
-                    outputs = model(inputs)
+                  outputs = model(inputs)
                  
               ########################### 
                   val_loss += loss_function(outputs, targets, weights)
-                  
-                  
+               
                   v_IoU, v_prec, v_recall = comp_IoU(outputs, targets, masks)
                   v_mIoU, seg_lis = m_IoU(outputs, targets)
                    
