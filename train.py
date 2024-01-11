@@ -47,8 +47,6 @@ NUM_WORKERS = 6 # 2 to eliminate DataLoader running slow or even freeze
 FOLD_NUM = 1
 
 #import wandb
-
-
 ######################################################################
 
 def parse_arguments():
