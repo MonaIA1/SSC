@@ -46,7 +46,7 @@ To generate 3D volumes for train and evaluate the SSC model:
 ### SSC Training
 For training the 3D model, use `run_t_job.sh`, or run:  
 
-`python train.py --dataset NYU --model_name ResUNet --expr_name xxxx --train_batch_size 4 --val_batch_size 2 --base_lr 0.01 --decay 0.0005 --epochs 60`  
+`python train.py --dataset NYU --model_name ResUNet --expr_name xxxx --train_batch_size 4 --val_batch_size 2 --base_lr 0.01 --decay 0.0005 --epochs 100`  
 
 (check help --help for additional information)
 
