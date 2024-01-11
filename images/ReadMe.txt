@@ -1,2 +1,2 @@
-This folder contatins the visualized materials used in this paper.
+This folder contains the visualization materials.
 
