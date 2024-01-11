@@ -10,7 +10,6 @@ import os
 from sklearn.utils import shuffle
 import argparse
 from torch.optim.lr_scheduler import OneCycleLR
-
 from timeit import default_timer as timer 
 # Import tqdm for progress bar
 from tqdm.auto import tqdm
@@ -24,8 +23,17 @@ from model.metrics import comp_IoU, m_IoU
 from torchsummary import summary
 
 ###### set seeds ###################################################
-torch.manual_seed(42)
-torch.cuda.manual_seed(42)
+SEED_VAL = 1234
+np.random.seed(SEED_VAL)
+random.seed(SEED_VAL)
+# Set a fixed value for the hash seed
+os.environ["PYTHONHASHSEED"] = str(SEED_VAL)
+torch.manual_seed(SEED_VAL)
+torch.cuda.manual_seed(SEED_VAL)
+torch.cuda.manual_seed_all(SEED_VAL)
+# when running on the CuDNN backend
+torch.backends.cudnn.deterministic = True  
+torch.backends.cudnn.benchmark = False
 ####################################################################
  
 MODEL_NAME ='ResUNet'
