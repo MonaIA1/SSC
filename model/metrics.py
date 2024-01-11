@@ -6,7 +6,7 @@ def comp_IoU(pred, target, mask): # 0.25 occluded empty, 0.5 visible occubied (o
   tp, fp, fn, tn, inter, union, precision, recall, mask_occl, occl_target, occl_pred = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   
   # expand dimensions of mask tensor to match target and predicted tensors
-  # Use torch.where() to replace non-zero values with 1 and execlude the surface values
+  # use torch.where() to replace non-zero values with 1 and execlude the surface values
   mask_occl= torch.where(mask == 0.5, torch.tensor(0.0), mask)
   mask_occl = torch.where((mask_occl == 0.25), torch.tensor(1.0), mask_occl)
   
@@ -32,8 +32,6 @@ def comp_IoU(pred, target, mask): # 0.25 occluded empty, 0.5 visible occubied (o
      recall = 0 
   
   comp_iou = inter / (union + eps)
-  
-  
   return comp_iou*100, precision *100, recall*100
   ####################################################################################################
 def m_IoU(pred, target):
