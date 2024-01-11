@@ -49,11 +49,7 @@ def obj_generation():
   
   gt_loader = DataLoader(gt_data, batch_size= 1, shuffle=False,num_workers=NUM_WORKERS)
   
-  if  MODEL_NAME == 'ResUNet':
-      model_ = get_res_unet()
-  
-  elif MODEL_NAME == 'SSCNet':
-      model_ = get_SSCNet()
+  model_ = get_res_unet()
   
   #######################################################
   # Make device agnostic code
