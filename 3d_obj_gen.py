@@ -4,7 +4,6 @@ import pandas as pd
 from torch.utils.data import DataLoader, Dataset
 from utils.data_setup import SSCData
 from utils.file_utils import get_all_preprocessed_prefixes
-from model.SSC_networks import get_SSCNet
 from model.network import get_res_unet
 from utils.visual_utils import voxel_export, obj_export
 import argparse
