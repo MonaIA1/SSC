@@ -13,7 +13,7 @@ from utils.data_setup import SSCData
 from utils.file_utils import get_all_preprocessed_prefixes 
 from utils.engin import EarlyStopping, create_writer,save_model, print_train_time 
 from model.network import get_res_unet
-from model.losses import WeightedCrossEntropyLoss, WCE_BalancedClusters, WCE_k3Clusters
+from model.losses import WeightedCrossEntropyLoss, WCE_k3Clusters
 from model.metrics import comp_IoU, m_IoU
 from torch.utils.tensorboard import SummaryWriter
 
@@ -67,12 +67,12 @@ def model_evalauteion ():
   device = torch.device(dev) if torch.cuda.is_available() else torch.device("cpu")
   
   # define loss
-  loss_function = WCE_BalancedClusters(device)
+  loss_function = WCE_k3Clusters(device)
   
   for w in range(len(SAVED_WEIGHTES)):
   
-    if  MODEL_NAME == 'ResUNet':
-      model_eval = get_res_unet()
+    
+    model_eval = get_res_unet()
      
     # initialize wandb for each weighted fold
     #run = wandb.init(project=f'{MODEL_NAME}_{EXPR_NAME}_testing', group='k-fold', name=f'fold-{fold_num}', reinit=True)
