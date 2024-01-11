@@ -14,7 +14,7 @@ class WCE_k3Clusters(nn.Module): # combine random sampling and balanced weights
         class_weights = torch.tensor([1.0, 3.0, 2.0, 2.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 1.0, 2.0]).to(device)
         self.loss_fun = nn.CrossEntropyLoss(weight=class_weights)
 
-    def forward(self, pred: Tensor, target: Tensor, weight: Tensor) -> Tensor:  # weight for random sampling  
+    def forward(self, pred: Tensor, target: Tensor, weight: Tensor) -> Tensor:  # for random sampling  
         weights_expanded: Tensor = weight.unsqueeze(1).expand_as(target)
         weighted_target: Tensor = target * weights_expanded
         
