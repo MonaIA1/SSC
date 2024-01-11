@@ -4,7 +4,7 @@
     Author: Mona Alawadh (Sept, 2023)
     *Original Caffe Code: Shuran Song (https://github.com/shurans/sscnet)
     ** https://gitlab.com/UnBVision/spawn/-/blob/main/src/lib_preproc.cu?ref_type=heads
-    to compile:
+    to compile use:
     nvcc -std=c++11 --ptxas-options=-v --compiler-options '-fPIC' -o lib_preproc.so --shared lib_preproc.cu  
 */
 
