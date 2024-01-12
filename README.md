@@ -4,7 +4,7 @@ SSC results from depth maps only by NYUv2 dataset. The 3D models displayed from 
 ![SSC results from depth maps only by NYUv2 dataset. The 3D models displayed from different viewpoints to illustrate the scene completion in the occluded regions and scene semantics. Each object represented by a unique color and circles show the main differences between GT and the predictions by SSCNet model and ours.](images/OursVSSSCNet.png)
 
 The following demo shows the predicted 3D models from the NYUCAD dataset, comparing scenarios where our proposed weighting method was applied versus when they were not.
-[![Demo](images/demo_thumbnail.PNG)](https://drive.google.com/file/d/17LIwaj8-4rG7cBkZ-pSWsmvu5Q68rvQc/view?usp=sharing)
+[![Demo](images/demo_thumbnail.PNG)](https://drive.google.com/file/d/1CzKp2mJMy1e6F_tZl71nSiPGu1ndcET3/view?usp=sharing)
 
 
 This is the setup environment, dataset preperation and the source code for reproducing the results of the paper, available in:
