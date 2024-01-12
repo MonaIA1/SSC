@@ -1,1 +1,1 @@
-This folder contains the rendered obj predicted models. 
+This folder contains the predicted 3D models in obj format. These files can be visualized using 3D rendering SW such as Meshlab or Unity.
