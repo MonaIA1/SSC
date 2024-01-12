@@ -6,6 +6,7 @@ SSC results from depth maps only by NYUv2 dataset. The 3D models displayed from 
 The following demo shows the predicted 3D models from the NYUCAD dataset, comparing scenarios where our proposed weighting method was applied versus when they were not.
 [![Demo](images/demo_thumbnail.PNG)](https://drive.google.com/file/d/17LIwaj8-4rG7cBkZ-pSWsmvu5Q68rvQc/view?usp=sharing)
 
+
 This is the setup environment, dataset preperation and the source code for reproducing the results of the paper, available in:
 Please cite the paper if part of the code is used for anypurpose.
 
