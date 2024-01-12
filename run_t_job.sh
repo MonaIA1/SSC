@@ -6,4 +6,4 @@
 #SBATCH --time=60:00:00          # walltime
 export CUDA_VISIBLE_DEVICES=0
 
-python train.py --dataset NYU --model_name ResUNet --expr_name clust_k3 --train_batch_size 4 --val_batch_size 2 --base_lr 0.01 --decay 0.0005 --epochs 100
+python train.py --dataset NYU --model_name ResUNet --expr_name k3_depthOnly --train_batch_size 4 --val_batch_size 2 --base_lr 0.01 --decay 0.0005 --epochs 100
