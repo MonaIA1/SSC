@@ -12,7 +12,7 @@ Please cite the paper if part of the code is used for anypurpose.
 
 ## Setup
 ### Hardware Requirement
-At least one NVIDIA GPU 
+At least one NVIDIA GPU with 11GB RAM.
 ### Environmet Setup
 - conda install pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 - conda install -c conda-forge tqdm
