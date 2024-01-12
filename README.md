@@ -1,4 +1,6 @@
 # 3D Semantic Scene Completion from a Depth Map with Unsupervised Learning for Semantics Prioritisation
+[Demo]([Your-Video-Link-Here](https://drive.google.com/file/d/17LIwaj8-4rG7cBkZ-pSWsmvu5Q68rvQc/view?usp=sharing))
+
 This is the setup environment, dataset preperation and the source code for reproducing the results of the paper, available in:
 Please cite the paper if part of the code is used for anypurpose.
 
