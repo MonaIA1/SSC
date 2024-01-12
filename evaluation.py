@@ -17,7 +17,8 @@ from model.metrics import comp_IoU, m_IoU
 from torch.utils.tensorboard import SummaryWriter
 
 
-
+#import wandb
+#wandb.login(key='add your key')
 ######################################################################
 MODEL_NAME ='ResUNet'
 BATCH_SIZE = 1
