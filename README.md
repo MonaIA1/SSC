@@ -1,5 +1,5 @@
 # 3D Semantic Scene Completion from a Depth Map with Unsupervised Learning for Semantics Prioritisation
-SSC results from depth maps only by NYUv2 dataset. The 3D models displayed from different viewpoints to illustrate the scene completion in the occluded regions and scene semantics. Each object represented by a unique color and circles show the main differences between GT and the predictions by SSCNet model and ours.
+![SSC results from depth maps only by NYUv2 dataset. The 3D models displayed from different viewpoints to illustrate the scene completion in the occluded regions and scene semantics. Each object represented by a unique color and circles show the main differences between GT and the predictions by SSCNet model and ours.]
 (https://github.com/MonaIA1/SSC/blob/master/images/OursVSSSCNet.png)
 
 The following demo shows the predicted 3D models from the NYUCAD dataset, comparing scenarios where our proposed weighting method was applied versus when they were not.
