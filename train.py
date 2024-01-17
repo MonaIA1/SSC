@@ -34,6 +34,8 @@ torch.cuda.manual_seed_all(SEED_VAL)
 # when running on the CuDNN backend
 torch.backends.cudnn.deterministic = True  
 torch.backends.cudnn.benchmark = False
+def worker_init_fn(worker_id): 
+    np.random.seed(np.random.get_state()[1][0] + worker_id)   
 ####################################################################
  
 MODEL_NAME ='ResUNet'
@@ -116,8 +118,8 @@ def train():
       
       print(f'Items in train_dataset ',len(train_ds), ' |  Items in val_dataset ',len(val_ds))
   
-      train_loader = DataLoader(train_ds, batch_size=TRAIN_BATCH_SIZE, shuffle=True,num_workers=NUM_WORKERS, pin_memory=True) 
-      val_loader = DataLoader(val_ds, batch_size=VAL_BATCH_SIZE, shuffle=False,num_workers=NUM_WORKERS, pin_memory=True)
+      train_loader = DataLoader(train_ds, batch_size=TRAIN_BATCH_SIZE, shuffle=True,num_workers=NUM_WORKERS,worker_init_fn=worker_init_fn, pin_memory=True) 
+      val_loader = DataLoader(val_ds, batch_size=VAL_BATCH_SIZE, shuffle=False,num_workers=NUM_WORKERS,worker_init_fn=worker_init_fn, pin_memory=True)
   
       # check
       print(f"Length of train dataloader: {len(train_loader)} batches ({len(train_ds)}/{TRAIN_BATCH_SIZE})")
@@ -165,6 +167,8 @@ def train():
       print(f'Number of EPOCHS in this fold: {EPOCHS}')  
       
       for epoch in tqdm(range(EPOCHS)):
+          # set random seed for workers for each epoch
+          np.random.seed(NUM_WORKERS*epoch)
           ### Training
           model.train()
           train_loss, train_IoU, train_prec, train_recall, train_mIoU = 0,0,0,0,0
