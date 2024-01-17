@@ -47,27 +47,25 @@ class BuildResUNet(nn.Module):
         # Trunk part
         """ Encoders  """
         self.conv1 = nn.Conv3d(1, 8, kernel_size=(3, 3, 3), padding='same')
-        self.r1 = ResBlock(1, 8, kernel_size=kernel_size)
+        self.r1 = ResBlock(8, 8, kernel_size=kernel_size)
         self.mp1 = nn.MaxPool3d(kernel_size=(2, 2, 2), stride=(2, 2, 2))
 
         self.conv2 = nn.Conv3d(8, 16, kernel_size=(3, 3, 3), padding='same')
-        self.r2 = ResBlock(8, 16, kernel_size=kernel_size)
+        self.r2 = ResBlock(16, 16, kernel_size=kernel_size)
         self.mp2 = nn.MaxPool3d(kernel_size=(2, 2, 2), stride=(2, 2, 2))
         ## Now start U part.
         self.conv3 = nn.Conv3d(16, 32, kernel_size=(3, 3, 3), padding='same')
-        self.r3 = ResBlock(16, 32, kernel_size=(3, 3, 3))
+        self.r3 = ResBlock(32, 32, kernel_size=(3, 3, 3))
         self.mp3 = nn.MaxPool3d(kernel_size=(2, 2, 2), stride=(2, 2, 2))
 
         self.conv4 = nn.Conv3d(32, 64, kernel_size=(3, 3, 3), padding='same')
-        self.r4 = ResBlock(32, 64, kernel_size=(3, 3, 3), dilation=1)  
-
-        self.r5 = ResBlock(64, 64, kernel_size=(3, 3, 3), dilation=1)  
+        self.r4 = ResBlock(64, 64, kernel_size=(3, 3, 3), dilation=1)  # Dilation rate
+        self.r5 = ResBlock(64, 64, kernel_size=(3, 3, 3), dilation=1)  # Dilation rate
         self.mp5 = nn.MaxPool3d(kernel_size=(2, 2, 2), stride=(2, 2, 2))
 
         self.conv6 = nn.Conv3d(64, 128, kernel_size=(3, 3, 3), padding='same')
-        self.r6 = ResBlock(128, 128, kernel_size=(3, 3, 3), dilation=1)  
-
-        self.r7 = ResBlock(128, 128, kernel_size=(3, 3, 3), dilation=1) 
+        self.r6 = ResBlock(128, 128, kernel_size=(3, 3, 3), dilation=1)  # Dilation rate
+        self.r7 = ResBlock(128, 128, kernel_size=(3, 3, 3), dilation=1)  # Dilation rate
 
         """ Transpose 1 """
         self.trans1 = nn.ConvTranspose3d(in_channels=128, out_channels=64, kernel_size=(2, 2, 2), stride=(2, 2, 2))
@@ -91,7 +89,7 @@ class BuildResUNet(nn.Module):
         self.f2 = nn.Conv3d(16, 16, kernel_size=1, padding='same')
         self.f3 = nn.Conv3d(16, 12, kernel_size=1, padding='same')
         self.relu = nn.ReLU()
-        #self.softmax = nn.Softmax(dim=1)
+        
 
     def forward(self, inputs):
     
