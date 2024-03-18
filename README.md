@@ -24,7 +24,7 @@ At least one NVIDIA GPU with 11GB RAM.
 - conda install -c conda-forge opencv
 
 ## Datasets
-To download the NYU dataset depth maps and the 3D ground truth semantics, we use those used by SSCNet paper available in: https://github.com/shurans/sscnet/blob/master/download_data.sh
+To download the NYU datasets depth maps and the 3D ground truth semantics, we use those used by SSCNet paper available in: https://github.com/shurans/sscnet/blob/master/download_data.sh
                
          NYUtrain 
                     |-- xxxxx_0000.png // depth map
