@@ -603,7 +603,7 @@ void getDepthData_cpp(unsigned char* depth_image, float* depth_data) {
     unsigned short depth_raw;
     for (int i = 0; i < frame_height * frame_width; ++i) {
         depth_raw = ((((unsigned short)depth_image[i * 2 + 1]) << 8) + ((unsigned short)depth_image[i * 2 + 0]));
-        depth_raw = (depth_raw << 13 | depth_raw >> 3); // 3 and 13 are bit shift values used to convert the input depth map depth from a 16 - bit unsigned integer format to a 32 - bit floating - point format
+        depth_raw = (depth_raw << 13 | depth_raw >> 3); // 3 and 13 are bit shift values
         depth_data[i] = float((float)depth_raw / 1000.0f);
 
     }
