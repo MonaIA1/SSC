@@ -23,9 +23,6 @@ def vox_dist():
 
   train_loader = DataLoader(train_ds, batch_size=1, shuffle=True,num_workers=1)
   occl_emp_count=0
-  occl_occu_count=0
-  surface_count=0
-  empty_count=0
   
   #######################################################
   # Make device agnostic code
@@ -37,20 +34,13 @@ def vox_dist():
       x, y, w, m = sample['vox_tsdf'].to(device), sample['vox_lbl'].to(device), sample['vox_weight'].to(device),sample['vox_mask'].to(device) # x (input)-> tsdf, y(target)-> gt_labels, w-> weights of occluded and occupied regions =1 while other voxels =0. m-> masks of the occluded and occupied regions
 # Main Function
       # Count the number of elements
-      occl_occu_count += (m == 1.0).sum() # occluded occubied
-      surface_count += (m == 0.5).sum() # occubied on surface
       occl_emp_count += (m == 0.25).sum() # occluded empty
-      empty_count += (m == 0.0).sum() 
-  
-  print (f' occl_occu_count: {occl_occu_count}')
-  print (f' surface_count: {surface_count}')
+   
   print (f' occl_emp_count: {occl_emp_count}')
-  print (f' empty_count: {empty_count}')
-  
+
   
 def main():
     vox_dist()
-   
     
 if __name__ == '__main__':
   main()        
